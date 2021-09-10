@@ -1,0 +1,52 @@
+# Note to maximize caching, leave the more frequently rebuilt portions toward the end
+# For dev, use host volumes, relax consistency for speed
+FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu18.04
+ARG DEBIAN_FRONTEND=noninteractive
+
+# install packages to upgrade cmake
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    gnupg \
+    software-properties-common \
+    wget \
+    git \
+    nano
+    
+RUN wget -qO - https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add - && \
+    apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && \
+    apt-get update
+
+RUN apt-get install -y \
+    cmake \
+    cmake-qt-gui \
+    libatlas-base-dev \
+    libprotobuf-dev \
+    libleveldb-dev \
+    libsnappy-dev \
+    libhdf5-serial-dev \
+    protobuf-compiler \
+    libopencv-dev \
+    libgflags-dev \
+    libgoogle-glog-dev \
+    liblmdb-dev
+
+# Fix network time protocol (removes clock skew error, requires ntp)
+RUN apt-get install --no-install-recommends libboost-all-dev -y && \
+  rm -rf /var/lib/apt/lists/* && \
+  touch /usr/src/openpose*
+
+# Only define which port the image should listen to, not actually port forwarding
+# EXPOSE 9090
+
+# These commands copy your files into the specified directory in the image
+# and set that as the working location
+WORKDIR /usr/src/openpose
+COPY . /usr/src/openpose
+
+# Build files
+
+# This command runs your application, comment out this line to compile only
+# CMD ["ros2", "launch", "demo_nodes_cpp", "talker_listener.launch.py"]
+
+LABEL Name=openpose Version=0.0.1

@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  openpose:
+    image: openpose
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/usr/src/openpose
+    tty: true
