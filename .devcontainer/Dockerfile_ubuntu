@@ -1,6 +1,9 @@
 # Note to maximize caching, leave the more frequently rebuilt portions toward the end
 # For dev, use host volumes, relax consistency for speed
 FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu18.04
+# FROM nvidia/cuda:11.1.1-cudnn8-runtime-centos7
+#FROM nvidia/cuda:11.1.1-cudnn8-devel-centos7
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 # install packages to upgrade cmake
@@ -49,4 +52,4 @@ COPY . /usr/src/openpose
 # This command runs your application, comment out this line to compile only
 # CMD ["ros2", "launch", "demo_nodes_cpp", "talker_listener.launch.py"]
 
-LABEL Name=openpose Version=0.0.1
+LABEL Name=openpose_centos Version=0.0.1

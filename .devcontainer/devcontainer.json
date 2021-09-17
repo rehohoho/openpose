@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/docker-existing-dockerfile
 {
-	"name": "Openpose",
+	"name": "openpose_centos",
 
 	// Sets the run context to one level up instead of the .devcontainer folder.
 	// "context": "..",
@@ -9,7 +9,7 @@
 	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 	// "dockerFile": "../Dockerfile",
 
-	"dockerComposeFile": "../docker-compose.yml",
+	"dockerComposeFile": "./docker-compose.yml",
 	"service": "openpose",
 	"workspaceFolder": "/usr/src/openpose",
 

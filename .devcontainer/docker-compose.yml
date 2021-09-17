@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  openpose:
+    image: openpose_centos
+    build:
+      context: .
+      dockerfile: ./Dockerfile_centos
+    volumes:
+      - ../:/usr/src/openpose
+    tty: true
