@@ -2,10 +2,10 @@ version: '2'
 
 services:
   openpose:
-    image: openpose_centos
+    image: openpose_centos # openpose_ubuntu
     build:
       context: .
-      dockerfile: ./Dockerfile_centos
+      dockerfile: ./Dockerfile_centos # ./Dockerfile_ubuntu
     volumes:
       - ../:/usr/src/openpose
     tty: true

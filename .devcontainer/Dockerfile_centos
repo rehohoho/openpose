@@ -1,8 +1,6 @@
 # Note to maximize caching, leave the more frequently rebuilt portions toward the end
 # For dev, use host volumes, relax consistency for speed
-# FROM nvidia/cuda:11.1.1-cudnn8-devel-ubuntu18.04
-FROM nvidia/cuda:11.1.1-cudnn8-runtime-centos7
-#FROM nvidia/cuda:11.1.1-cudnn8-devel-centos7
+FROM nvidia/cuda:11.1.1-cudnn8-devel-centos7
 
 ARG DEBIAN_FRONTEND=noninteractive
 
